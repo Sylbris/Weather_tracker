@@ -13,3 +13,23 @@ We have used the MERN stack,
 using React as our front-end , Express and nodejs as our backend routes.
 finaly our Database was mongoDB (atlas).
 
+# Coding standards & design patterns
+The project was used conventional javascript coding standards.
+https://www.w3schools.com/js/js_conventions.asp
+
+We have used the MERN architechure:
+for client side:
+- Using react redux to manage api calls.
+- Each component has one part (SOC).
+- Creating different layers.
+
+for server side:
+- using the model & controller (since view is client side).
+- separating the backend into layers.
+
+# Structure
+
+The project was devided into microservices.
+where this part of the project, simple interacts with the database(fetch, create).
+while another microservice is incharge of updating DATABASE from external sources.
+
