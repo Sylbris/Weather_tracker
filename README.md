@@ -33,3 +33,5 @@ The project was devided into microservices.
 where this part of the project, simple interacts with the database(fetch, create).
 while another microservice is incharge of updating DATABASE from external sources.
 
+
+![project_str](https://user-images.githubusercontent.com/62143916/185386560-5fb5d849-2488-4891-a497-6fe9abbe3ae0.png)
