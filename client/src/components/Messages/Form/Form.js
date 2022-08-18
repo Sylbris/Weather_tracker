@@ -17,6 +17,7 @@ const Form = () => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
+    
     const handleSubmit = (e) => {
         //Prevents the browser from refreshing/reloading.
         e.preventDefault();

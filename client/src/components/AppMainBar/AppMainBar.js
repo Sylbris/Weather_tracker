@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, AppBar, IconButton, Toolbar,
-     InputBase, Badge, MenuItem, Menu } from "@material-ui/core";
+     InputBase, Badge, MenuItem, Menu, Button } from "@material-ui/core";
+import AddFileDialog from './AddFileDialog/AddFileDialog';
+
+// ICON imports
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -12,15 +15,24 @@ import useStyles from './styles';
 const AppMainBar = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+    const [open, setOpen] = useState(false);
+
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   
     const handleProfileMenuOpen = (event) => {
       setAnchorEl(event.currentTarget);
     };
-  
+    
+    const handleClickAddConfig = () => {
+      setOpen(true);
+    };
+
+    const handleClose = () => {
+      setOpen(false);
+    };
+
     const handleMobileMenuClose = () => {
       setMobileMoreAnchorEl(null);
     };
@@ -45,8 +57,8 @@ const AppMainBar = () => {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Manage Users</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
       </Menu>
     );
   
@@ -106,31 +118,13 @@ const AppMainBar = () => {
             <Typography className={classes.title} variant="h6" noWrap>
               Welcome Dan Davydov
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton aria-label="show 17 new notifications" color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+            <Button variant="contained" color="primary" onClick={handleClickAddConfig}>
+                Add configuration file
+              </Button>
+              <AddFileDialog open={open} onClose={handleClose} />
               <IconButton
                 edge="end"
                 aria-label="account of current user"

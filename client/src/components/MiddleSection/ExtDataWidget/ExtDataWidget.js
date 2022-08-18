@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
-import DataParameters from './DataParameters'
 
 const Wrap = styled.div`
 display: grid;
@@ -14,11 +13,11 @@ height: 15vh;
 `
 const Container = styled.div`
 background: #14121b;
-width: 80px;
+width: 60px;
 height: 15vh;
-margin: 10px;
+margin: 0px;
 display: grid;
-grid-template-rows: 2fr 1fr;
+grid-template-columns: 2fr 1fr;
 align-items: center;
 justify-content: center;
 `
@@ -33,18 +32,7 @@ color: white;
 font-family: Arial;
 `
 
-const Datawidget = ({icon, text, range}) => {
-    const currentTime = new Date();
-    const time = currentTime.getDate();
-    let warning = "normal";
-
-    if(text < range){
-        warning = "LOW";
-    }
-    if(text > range){
-        warning = "HIGH";
-    }
-
+const ExtDataWidget = ({icon, text}) => {
   return (
       <Wrap>
         <Container>
@@ -55,9 +43,8 @@ const Datawidget = ({icon, text, range}) => {
                 <h3>{text}</h3>
             </Text>
         </Container>
-        <DataParameters Range={range} Status={warning} LastUpdated={time} Updatedby="Dan Davidov"/>
     </Wrap>
   )
 }
 
-export default Datawidget
+export default ExtDataWidget;

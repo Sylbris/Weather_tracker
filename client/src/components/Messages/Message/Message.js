@@ -3,12 +3,16 @@ import { Grid, CircularProgress, Paper } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import useStyles from './styles';
 import SingleMessage from './SingleMessage/SingleMessage';
-const temp = "<SingleMessage post={post}/>";
 
+/**
+ * This component keeps all the messages rendered from the DB.
+ * We recieve the messages throughout redux.
+ * @returns 
+ */
 const Message = () => {
     const posts = useSelector((state) => state.posts);
     const classes = useStyles();
-    //console.log(posts)
+    
     return (
        
         !posts.length ? <CircularProgress /> : (

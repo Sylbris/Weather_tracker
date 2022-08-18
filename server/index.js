@@ -4,6 +4,10 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import postRoutes from './routes/posts.js';
+import fileRoutes from './routes/file.js';
+import readingRoutes from './routes/readings.js';
+import extRoutes from './routes/extReadings.js';
+import nationalReadingsRoute from './routes/nationalReadings.js';
 
 const app = express();
 
@@ -11,7 +15,12 @@ app.use(bodyParser.json({ limit:"30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit:"30mb", extended: true}));
 app.use(cors());
 
+// App routes.
 app.use('/posts', postRoutes);
+app.use('/file', fileRoutes);
+app.use('/readings', readingRoutes);
+app.use('/ims', extRoutes);
+app.use('/nationalReadings', nationalReadingsRoute);
 
 const CONNECTION_URL = 'mongodb+srv://weather_tracker:1q2w3e4r@cluster0.hbxbt59.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
