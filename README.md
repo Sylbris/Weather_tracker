@@ -27,6 +27,8 @@ for server side:
 - using the model & controller (since view is client side).
 - separating the backend into layers.
 
+One of our main concerns was making the app as scalable as possible.
+
 # Structure
 
 The project was devided into microservices.
