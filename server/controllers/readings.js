@@ -12,15 +12,22 @@ const router = express.Router();
  */
 export const getReadings = async(req, res) => {
     try {
-        const uploadReadings = await UploadReadings.findOne();
-
-        res.status(200).json(uploadReadings);
+        
+        const limit = req.query.limit;
+        
+        if(limit){
+            const uploadReadings = await UploadReadings.find().limit(limit);
+            res.status(200).json(uploadReadings);
+        }
+        else {
+            const uploadReadings = await UploadReadings.find();
+            res.status(200).json(uploadReadings[uploadReadings.length - 1]);
+        }
     }
     catch(error){
         res.status(400).json({ message: error.message});
     }
 }
-
 /**
  * Send a new post to the database.
  * @param {*} req 

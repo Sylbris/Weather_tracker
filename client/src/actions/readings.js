@@ -18,6 +18,22 @@ export const getReadings = () => async(dispatch) => {
 
 }
 /**
+ * Get last 7 readings.
+ * @returns 
+ */
+export const getReadingsMultiple = () => async(dispatch) => {
+    try {
+        const { data } = await api.getReadingsMultiple();
+        
+        dispatch({ type: 'GET_LAST_READINGS', payload: data });
+    } catch (error){
+
+        console.log(error.message);
+
+    }
+
+}
+/**
  * Send the post to the database, through the api.
  * @returns 
  */
@@ -25,7 +41,7 @@ export const createReadings = (readings) => async(dispatch) => {
     try {
         const { data } = await api.uploadReadings(readings);
 
-        dispatch({ type: 'CREATE', payload: data});
+        dispatch({ type: 'UPDATE_READINGS', payload: data});
     }
     catch (error) {
         console.log(error);

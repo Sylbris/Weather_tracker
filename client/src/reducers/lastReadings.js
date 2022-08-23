@@ -5,13 +5,11 @@
  * @param {*} action 
  * @returns 
  */
- export default (readings = [], action) => {
+ export default (lastReadings = [], action) => {
     switch(action.type){
-        case 'GET_CURRENT_READINGS':
-            return action.payload;
-        case 'UPDATE_READINGS':
+        case 'GET_LAST_READINGS':
             return action.payload;
         default:
-            return readings;
+            return lastReadings;
     }
 }

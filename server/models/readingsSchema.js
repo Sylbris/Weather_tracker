@@ -5,6 +5,10 @@ const uploadReadings = mongoose.Schema({
     wind: Number,
     radiation: Number, 
     humidity: Number,
+    updatedAt:  {
+        type: Date,
+        default: new Date(),
+    },
 })
 
 var UploadReadings = mongoose.model('UploadReadings', uploadReadings);

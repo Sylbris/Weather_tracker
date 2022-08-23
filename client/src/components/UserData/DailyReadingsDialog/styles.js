@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    background: '#14121b',
+    background: '#ffffff',
     margin: '5px',
   },
   headline: {

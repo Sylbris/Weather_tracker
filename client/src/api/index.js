@@ -10,6 +10,9 @@ const fileUploadURL = 'http://localhost:5000/file';
 //Backend endpoint userdata.
 const userReadingsURL = 'http://localhost:5000/readings';
 
+//Backend endpoint userdata.
+const userReadingsURLMultiple = 'http://localhost:5000/readings?limit=7';
+
 //Backend endpoint to users.
 const userURL = 'http://localhost:5000/users';
 
@@ -39,6 +42,8 @@ export const getFile = () => axios.get(fileUploadURL);
 export const uploadReadings = (readings) => axios.post(userReadingsURL, readings);
 
 export const getReadings = () => axios.get(userReadingsURL);
+
+export const getReadingsMultiple = () => axios.get(userReadingsURLMultiple);
 
 export const getExtReadings = () => axios.get(imsURL);
 

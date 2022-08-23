@@ -17,11 +17,8 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const Container = styled.div`
 background: #15171c;
-width: 80%px;
-height: 50vh;
 display: flex;
 justify-content: flex-start;
-margin: 20px;
 `
 const position = [32.08, 34.78]
 
@@ -43,19 +40,19 @@ const Map = () => {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
     <Marker position={nationalReadings[0][0].coordinates}>
-      <Popup>Popup for Marker</Popup>
+      <Popup>{nationalReadings[0][0].name}</Popup>
       <Tooltip permanent>{nationalReadings[0][0].temp}°</Tooltip>
     </Marker>
     <Marker position={nationalReadings[1][1].coordinates}>
-      <Popup>Popup for Marker</Popup>
+      <Popup>{nationalReadings[1][1].name}</Popup>
       <Tooltip permanent>{nationalReadings[1][1].temp}°</Tooltip>
     </Marker>
     <Marker position={nationalReadings[2][2].coordinates}>
-      <Popup>Popup for Marker</Popup>
+      <Popup>{nationalReadings[2][2].name}</Popup>
       <Tooltip permanent>{nationalReadings[2][2].temp}°</Tooltip>
     </Marker>
     <Marker position={nationalReadings[3][3].coordinates}>
-      <Popup>Popup for Marker</Popup>
+      <Popup>{nationalReadings[3][3].name}</Popup>
       <Tooltip permanent>{nationalReadings[3][3].temp}°°</Tooltip>
     </Marker>
       </MapContainer>

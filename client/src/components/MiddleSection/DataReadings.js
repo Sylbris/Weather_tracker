@@ -5,15 +5,15 @@ import Map from './Map';
 import { useSelector } from 'react-redux';
 import { FaIcons, FaRadiation, FaTemperatureHigh, FaWater, FaWind } from 'react-icons/fa';
 import ExtDataWidget from './ExtDataWidget/ExtDataWidget';
-
+import { Divider } from '@material-ui/core';
 const Container = styled.div`
-background: #15171c;
+background: #ffffff;
 width: 80%px;
 height: 50vh;
 display: flex;
 justify-content: Left;
 align-items:Left;
-margin: 20px;
+
 `
 const STabs = styled(Tabs)`
   font-family: BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -68,7 +68,7 @@ const STabPanel = styled(TabPanel)`
   border: 0px solid black;
   padding: 4px;
   margin-top: -5px;
-  background: #14121b;
+  background: #ffffff;
   &.is-selected {
     display: block;
   }
@@ -91,11 +91,15 @@ const DataReadings = () => {
             </STabList>
 
             <STabPanel>
-                <h2 style={{color:'#E2C044'}}>Israeli Meteorological Service</h2>
-                <h3 style={{color:'#E2C044'}}> Temperature: {extReadings.temperature}° </h3>
-                <h3 style={{color:'#E2C044'}}> Wind: {extReadings.wind} km/h</h3>
-                <h3 style={{color:'#E2C044'}}> Radiation: {extReadings.radiation} UV</h3>
-                <h3 style={{color:'#E2C044'}}> Humidity: {extReadings.humidity}%</h3>
+                <h2 style={{color:'#000000'}}>Israeli Meteorological Service</h2>
+                <h3 style={{color:'#000000'}}> Temperature: {extReadings.temperature}° </h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Wind: {extReadings.wind} km/h</h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Radiation: {extReadings.radiation} UV</h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Humidity: {extReadings.humidity}%</h3>
+                
             </STabPanel>
             <STabPanel>
                 <h2 style={{color:'#E2C044'}}>AccuWeather</h2>

@@ -3,7 +3,8 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, Button, Paper, T
 import useStyles from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadFile } from '../../../api';
-import { createReadings } from "../../../actions/readings";
+import { createReadings, getReadings } from "../../../actions/readings";
+
 /**
  * A simple Dialog to upload configuration file.
  * @param {*} props 
@@ -12,7 +13,6 @@ import { createReadings } from "../../../actions/readings";
 const DailyReadingsDialog = (props) => {
     const classes = useStyles();
     const { onClose, open } = props;
-
     const [readings, setReadings] = useState({
         temperature: '', wind: '', humidity: '', radiation: ''
     });
@@ -27,20 +27,25 @@ const DailyReadingsDialog = (props) => {
         setReadings(null);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         //Prevents the browser from refreshing/reloading.
         e.preventDefault();
         //Dispatch the action.
-        dispatch(createReadings(readings));
+        if(readings.humidity && readings.wind && readings.temperature && readings.radiation){
+            dispatch(createReadings(readings));
+        }
+        else {
+            console.log("Missing data");
+        }
+        onClose();
+        //Update the readings accordingly.
+        
     }
     
     return (
         <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
             <DialogTitle id="simple-dialog-title">Upload readings</DialogTitle>
             <DialogContent>
-                <DialogContentText>
-                    Some text
-                </DialogContentText>
                 <Paper className={classes.paper}>
                     <form autoComplete='off' noValidate className={classes.form} onSubmit={handleSubmit}>
                         <TextField name="temperature" variant="outlined" label="Temperature" fullWidth value={readings.temperature} onChange={ (e) => setReadings( { ...readings, temperature: e.target.value })}/>

@@ -10,9 +10,8 @@ import DailyReadingsDialog from './DailyReadingsDialog/DailyReadingsDialog';
 
 const Container = styled.div`
 background: #15171c;
-width: 80%px;
+
 height: 18vh;
-margin: 20px;
 `
 const Userdata = styled.div`
 display: grid;

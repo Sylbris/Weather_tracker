@@ -17,9 +17,11 @@ import AppMainBar from './components/AppMainBar/AppMainBar';
 import background from "./images/background.jpg";
 import Login from './components/Login/Login';
 import { getFile } from './actions/fileUpload';
-import { getReadings } from './actions/readings';
+import { getReadings, getReadingsMultiple } from './actions/readings';
 import { getExtReadings } from './actions/extReadings';
 import { getNationalReadings } from './actions/nationalReadings';
+import AppNavBar from './components/AppNavBar/AppNavBar';
+import { getReadingsWeekly } from './api';
 
 const App = () => {
     const classes = useStyles();
@@ -29,7 +31,7 @@ const App = () => {
     //We start the process of fetching the messages.
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch]);
+    }, []);
     
     useEffect(() => {
         dispatch(getFile());
@@ -37,6 +39,10 @@ const App = () => {
 
     useEffect(() => {
         dispatch(getReadings());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getReadingsMultiple());
     }, []);
 
     useEffect(() => {
@@ -52,12 +58,10 @@ const App = () => {
     }
 
     return (
-        <div style={{backgroundImage: `url(${background})`, }}>
+        <div style={{backgroundColor: "#CDC2AE"}}>
             <Router>
                     <AppMainBar />
-                    <UserData />
-                    <MiddleSection />
-                    <BottomSection />
+                    <AppNavBar />
             </Router>
         </div>
     )

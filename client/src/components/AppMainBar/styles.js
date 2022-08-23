@@ -4,17 +4,28 @@ export default makeStyles((theme) => ({
     grow: {
       flexGrow: 1,
     },
-    check: {color: '#000000', backgroundColor: '#14121b'},
+    check: {
+      display: 'flex',
+      justifyContent: 'center',
+      textAlign:"center",
+      color: '#000000',
+      backgroundColor: '#354259',
+  },
+  footer: {
+    display:"flex",
+    justifyContent:"center",
+  },
     menuButton: {
       marginRight: theme.spacing(2),
-      color: '#ffffff', 
+      color: '#F7ECDE', 
     },
     title: {
       display: 'none',
+      align: 'center',
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
-      color: '#ffffff',
+      color: '#F7ECDE',
     },
     search: {
       position: 'relative',
