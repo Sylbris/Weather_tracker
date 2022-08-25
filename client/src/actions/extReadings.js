@@ -17,3 +17,20 @@ export const getExtReadings = () => async(dispatch) => {
     }
 
 }
+
+/**
+ * Get last 7 readings.
+ * @returns 
+ */
+ export const getExtReadingsMultiple = () => async(dispatch) => {
+    try {
+        const { data } = await api.getExtReadingsMultiple();
+        
+        dispatch({ type: 'GET_LAST_IMS_READINGS', payload: data });
+    } catch (error){
+
+        console.log(error.message);
+
+    }
+
+}

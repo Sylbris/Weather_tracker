@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 import fileRoutes from './routes/file.js';
 import readingRoutes from './routes/readings.js';
 import extRoutes from './routes/extReadings.js';
@@ -21,6 +22,7 @@ app.use('/file', fileRoutes);
 app.use('/readings', readingRoutes);
 app.use('/ims', extRoutes);
 app.use('/nationalReadings', nationalReadingsRoute);
+app.use('/user', userRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://weather_tracker:1q2w3e4r@cluster0.hbxbt59.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

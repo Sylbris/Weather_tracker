@@ -4,8 +4,8 @@ export default makeStyles((theme) => ({
     mainContainer: {
       display: 'flex',
       width: '100%',
-      justifyContent: 'center',
+      justifyContent: 'Left',
       flexDirection: 'row',
-      margin: '5px',
+      
     },
   }));

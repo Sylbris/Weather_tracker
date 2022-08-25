@@ -5,27 +5,29 @@ export default makeStyles((theme) => ({
       flexGrow: 1,
     },
     check: {
-      display: 'flex',
-      justifyContent: 'center',
-      textAlign:"center",
       color: '#000000',
       backgroundColor: '#354259',
   },
   footer: {
-    display:"flex",
-    justifyContent:"center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
     menuButton: {
       marginRight: theme.spacing(2),
       color: '#F7ECDE', 
     },
     title: {
-      display: 'none',
-      align: 'center',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
+      display: 'flex',
+      justifyContent: 'center',
       color: '#F7ECDE',
+    },
+    logout: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      color: '#F7ECDE',
+      
+      width: '80px',
     },
     search: {
       position: 'relative',

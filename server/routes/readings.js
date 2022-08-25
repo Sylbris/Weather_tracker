@@ -1,6 +1,7 @@
 import express from 'express';
 
 import { getReadings, uploadReadings } from '../controllers/readings.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -8,6 +9,6 @@ const router = express.Router();
 router.get("/", getReadings);
 
 // Post 
-router.post("/", uploadReadings);
+router.post("/", auth, uploadReadings);
 
 export default router;

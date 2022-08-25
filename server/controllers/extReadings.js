@@ -12,9 +12,16 @@ const router = express.Router();
  */
 export const getExtReadings = async(req, res) => {
     try {
-        const extReadings = await ExtReadingsSchema.findOne();
+        const limit = req.query.limit;
 
-        res.status(200).json(extReadings);
+        if(limit){
+            const extReadings = await ExtReadingsSchema.find().sort({updatedAt:-1}).limit(limit);
+            res.status(200).json(extReadings);
+        }
+        else {
+            const extReadings = await ExtReadingsSchema.findOne().sort({updatedAt:-1});
+            res.status(200).json(extReadings);
+        }
     }
     catch(error){
         res.status(400).json({ message: error.message});

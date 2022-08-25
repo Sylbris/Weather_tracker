@@ -12,11 +12,11 @@ const router = express.Router();
  */
 export const getReadings = async(req, res) => {
     try {
-        
+        // Get query parameter limit
         const limit = req.query.limit;
         
         if(limit){
-            const uploadReadings = await UploadReadings.find().limit(limit);
+            const uploadReadings = await UploadReadings.find().sort({updatedAt:-1}).limit(limit);
             res.status(200).json(uploadReadings);
         }
         else {
@@ -36,6 +36,9 @@ export const getReadings = async(req, res) => {
 export const uploadReadings = async(req, res) => {
     // Load the request parameters.
     const { temperature, wind, humidity, radiation } = req.body;
+
+    // Check if user is logged in.
+    if(!req.userId) return res.json({ message: "Unauthenticated" });
 
     // Create a new Schema, with the parameters.
     const newReadings = new UploadReadings( { temperature, wind, humidity, radiation});

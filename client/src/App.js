@@ -15,18 +15,18 @@ import MiddleSection from './components/MiddleSection/MiddleSection';
 import BottomSection from './components/BottomSection/BottomSection';
 import AppMainBar from './components/AppMainBar/AppMainBar';
 import background from "./images/background.jpg";
-import Login from './components/Login/Login';
 import { getFile } from './actions/fileUpload';
 import { getReadings, getReadingsMultiple } from './actions/readings';
-import { getExtReadings } from './actions/extReadings';
+import { getExtReadings, getExtReadingsMultiple } from './actions/extReadings';
 import { getNationalReadings } from './actions/nationalReadings';
 import AppNavBar from './components/AppNavBar/AppNavBar';
 import { getReadingsWeekly } from './api';
+import Login from './components/Login/Login';
+import AppMainPage from './components/AppMainPage/AppMainPage';
 
 const App = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const [user, setUser] = useState();
 
     //We start the process of fetching the messages.
     useEffect(() => {
@@ -46,25 +46,23 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-        dispatch(getExtReadings());
+        dispatch(getExtReadingsMultiple());
     }, []);
 
     useEffect(() => {
+        dispatch(getExtReadings());
+    }, []);
+    
+    useEffect(() => {
         dispatch(getNationalReadings());
     }, []);
-
-    if(!user){
-        return (<Login user={user} setUser={setUser}></Login>);
-    }
-
+    
     return (
-        <div style={{backgroundColor: "#CDC2AE"}}>
-            <Router>
-                    <AppMainBar />
-                    <AppNavBar />
-            </Router>
-        </div>
-    )
-}
+        <Router>
+            <AppMainBar />
+            <AppMainPage />    
+        </Router>
+    );
+};
 
 export default App;

@@ -6,9 +6,9 @@ import moment from "moment";
  * @param {*} action 
  * @returns 
  */
- export default (lastReadings = [], action) => {
+ export default (extLastReadings = [], action) => {
     switch(action.type){
-        case 'GET_LAST_READINGS':{
+        case 'GET_LAST_IMS_READINGS': {
             var data = action.payload;
             // Reverse data and change date display.
             Object.keys(data).map((key)=> {
@@ -18,7 +18,9 @@ import moment from "moment";
             });
             return data.reverse();
         }
+        case 'UPDATE_E':
+            return extLastReadings;
         default:
-            return lastReadings;
+            return extLastReadings;
     }
 }

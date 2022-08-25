@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -16,7 +17,8 @@ import Map from '../MiddleSection/Map';
 import Messages from '../MiddleSection/Messages';
 import randomColor from 'randomcolor';
 import DataReadings from '../MiddleSection/DataReadings';
-
+import { getNationalReadings } from '../../actions/nationalReadings';
+import { useSelector } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
-
+  
   const handleChange = (event) => {
     setSpacing(Number(event.target.value));
   };
@@ -50,7 +52,7 @@ export default function Home() {
         </Grid>
         <Grid item xs={5}>
             Israel weather map:
-          <Map />
+            <Map />
         </Grid>
         <Grid item xs>
             Current weather:

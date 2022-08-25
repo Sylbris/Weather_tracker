@@ -9,6 +9,7 @@ import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import ToysIcon from '@material-ui/icons/Toys';
 import useStyles from './styles';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const Container = styled.div`
 background: #ffffff;
@@ -17,18 +18,20 @@ display: flex;
 flex-direction: row;
 justify-content: Left;
 `
-
+/**
+ * A component that displays the graph.
+ * @returns 
+ */
 const BottomSection = () => {
     const classes = useStyles();
     const lastReadings = useSelector((state) => state.lastReadings);
 
     return (
         <Container>
-            <LineChart width={800} height={110} data={lastReadings}>
-                <XAxis dataKey="updatedAt"/>
-                <YAxis/>
+            <LineChart width={850} height={110} data={lastReadings}>
+                <XAxis dataKey="updatedAt" tick={{fontSize: 9}} interval={0}/>
+                <YAxis tick={{fontSize: 9}}/>
                 <Line type="monotone" dataKey="temperature" stroke="#000000" />
-                <Line type="monotone" dataKey="wind" stroke="#f1c1d1" />
              </LineChart>
         </Container>
     );

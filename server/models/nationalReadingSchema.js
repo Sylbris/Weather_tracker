@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const nationalReadingSchema = mongoose.Schema({
-    Number:{}
+    Object: {}
 })
 
 var NationalReadingSchema = mongoose.model('nationalreadings', nationalReadingSchema);

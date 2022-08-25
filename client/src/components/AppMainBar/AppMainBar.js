@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Typography, AppBar, IconButton, Toolbar,
-     InputBase, Badge, MenuItem, Menu, Button } from "@material-ui/core";
+     InputBase, Badge, MenuItem, Menu, Button, Box } from "@material-ui/core";
 import AddFileDialog from './AddFileDialog/AddFileDialog';
-
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // ICON imports
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -14,39 +15,15 @@ import useStyles from './styles';
 import ComputerIcon from '@material-ui/icons/Computer';
 
 const AppMainBar = () => {
+    const dispatch = useDispatch();
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-    const [open, setOpen] = useState(false);
+    const [user, setUser] = useState();
 
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  
-    const handleProfileMenuOpen = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    
-    const handleClickAddConfig = () => {
-      setOpen(true);
-    };
+    const logout = () => {
+      dispatch({ type: 'LOGOUT' });
 
-    const handleClose = () => {
-      setOpen(false);
-    };
-
-    const handleMobileMenuClose = () => {
-      setMobileMoreAnchorEl(null);
-    };
-  
-    const handleMenuClose = () => {
-      setAnchorEl(null);
-      handleMobileMenuClose();
-    };
-  
-    const handleMobileMenuOpen = (event) => {
-      setMobileMoreAnchorEl(event.currentTarget);
-    };
-    
+      setUser(null);
+    }
     return (
       <div className={classes.grow}>
         <AppBar className={classes.check} position="static">
@@ -55,7 +32,9 @@ const AppMainBar = () => {
             <Typography className={classes.title} variant="h6" noWrap>
               Weather Dashboard Metrics
             </Typography>
+            
           </Toolbar>
+          
         </AppBar>
       </div>
     );

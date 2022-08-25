@@ -1,50 +1,36 @@
 import axios from 'axios';
 
-////////////////////////BACKEND endpoints////////////////////////////////////////
-//Backend endpoint to fetch or retrieve posts.
-const url = 'http://localhost:5000/posts';
-
-//Backend endpoint to uploadfiles.
-const fileUploadURL = 'http://localhost:5000/file';
-
-//Backend endpoint userdata.
-const userReadingsURL = 'http://localhost:5000/readings';
-
-//Backend endpoint userdata.
-const userReadingsURLMultiple = 'http://localhost:5000/readings?limit=7';
-
-//Backend endpoint to users.
-const userURL = 'http://localhost:5000/users';
-
-//Backend endpoint for external data.
-const imsURL = 'http://localhost:5000/ims';
-
-//Backend endpoint for national data.
-const nationalReadingsURL = 'http://localhost:5000/nationalReadings';
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 /////////////////////////////Message METHODS/////////////////////////////////
 //Get all posts.
-export const fetchPosts = () => axios.get(url);
+export const fetchPosts = () => API.get('/posts');
 
 //Send post.
-export const createPost = (newPost) => axios.post(url, newPost);
+export const createPost = (newPost) => API.post('/posts', newPost);
 
 ///////////////////////////////File METHODS////////////////////////////////
 
 //Upload File.
-export const uploadFile = (file) => axios.post(fileUploadURL, file);
+export const uploadFile = (file) => API.post('/file', file);
 
 //Get file.
-export const getFile = () => axios.get(fileUploadURL);
+export const getFile = () => API.get('/file');
 
 //////////////////////////Readings METHODS ////////////////////////////////
 
-export const uploadReadings = (readings) => axios.post(userReadingsURL, readings);
+export const uploadReadings = (readings) => API.post('/readings', readings);
 
-export const getReadings = () => axios.get(userReadingsURL);
+export const getReadings = () => API.get('/readings');
 
-export const getReadingsMultiple = () => axios.get(userReadingsURLMultiple);
+export const getReadingsMultiple = () => API.get('/readings?limit=7');
 
-export const getExtReadings = () => axios.get(imsURL);
+export const getExtReadingsMultiple = () => API.get('/ims?limit=7');
 
-export const getNationalReadings = () => axios.get(nationalReadingsURL);
+export const getExtReadings = () => API.get('/ims');
+
+export const getNationalReadings = () => API.get('/nationalReadings');
+
+///////////////// SIGN IN///////////////////////////
+
+export const signIn = (formData) => API.post('/user/signin', formData);

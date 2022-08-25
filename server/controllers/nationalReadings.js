@@ -13,7 +13,6 @@ const router = express.Router();
 export const getNationalReadings = async(req, res) => {
     try {
         const nationalReadings = await NationalReadingSchema.find();
-
         res.status(200).json(nationalReadings);
     }
     catch(error){

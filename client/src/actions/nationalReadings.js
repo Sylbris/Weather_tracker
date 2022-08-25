@@ -8,10 +8,8 @@ import * as api from '../api';
 export const getNationalReadings = () => async(dispatch) => {
     try {
         const { data } = await api.getNationalReadings();
-
         dispatch({ type: 'GET_NATIONAL_READINGS', payload: data });
     } catch (error){
-
         console.log(error.message);
 
     }
