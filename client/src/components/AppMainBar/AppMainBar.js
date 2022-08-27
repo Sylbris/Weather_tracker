@@ -4,6 +4,7 @@ import { Typography, AppBar, IconButton, Toolbar,
 import AddFileDialog from './AddFileDialog/AddFileDialog';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 // ICON imports
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -14,16 +15,15 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import useStyles from './styles';
 import ComputerIcon from '@material-ui/icons/Computer';
 
-const AppMainBar = () => {
+const AppMainBar = ({ user, setUser }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const [user, setUser] = useState();
 
     const logout = () => {
       dispatch({ type: 'LOGOUT' });
-
       setUser(null);
     }
+
     return (
       <div className={classes.grow}>
         <AppBar className={classes.check} position="static">
@@ -32,9 +32,9 @@ const AppMainBar = () => {
             <Typography className={classes.title} variant="h6" noWrap>
               Weather Dashboard Metrics
             </Typography>
-            
           </Toolbar>
-          
+          {user ? <Button onClick={logout}> LOGOUT </Button> :
+          <></>}
         </AppBar>
       </div>
     );

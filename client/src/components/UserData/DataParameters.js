@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBalanceScale, FaBasketballBall, FaCalendarTimes, FaRuler, FaSignal, FaTimes, FaTimesCircle, FaUser } from 'react-icons/fa'
+import { FaCalendarTimes, FaRuler, FaSignal, FaUser } from 'react-icons/fa'
 import styled from 'styled-components'
 
 const Container = styled.div`

@@ -11,7 +11,7 @@ export const getReadings = () => async(dispatch) => {
 
         dispatch({ type: 'GET_CURRENT_READINGS', payload: data });
     } catch (error){
-
+        
         console.log(error.message);
 
     }
@@ -40,7 +40,7 @@ export const getReadingsMultiple = () => async(dispatch) => {
 export const createReadings = (readings) => async(dispatch) => {
     try {
         const { data } = await api.uploadReadings(readings);
-
+        
         dispatch({ type: 'UPDATE_READINGS', payload: data});
     }
     catch (error) {

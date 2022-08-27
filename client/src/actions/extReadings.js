@@ -34,3 +34,31 @@ export const getExtReadings = () => async(dispatch) => {
     }
 
 }
+
+export const getMeteoblueReadings = () => async(dispatch) => {
+    try {
+        const { data } = await api.getMeteoblueReadings();
+
+        dispatch({ type: 'GET_LAST_METEOBLUE_READINGS', payload: data });
+
+    } catch (error){
+
+        console.log(error.message);
+
+    }
+
+}
+
+export const getWeatherIsrReadings = () => async(dispatch) => {
+    try {
+        const { data } = await api.getWeatherIsrReadings();
+        
+        dispatch({ type: 'GET_LAST_WEATHERISR_READINGS', payload: data });
+
+    } catch (error){
+
+        console.log(error.message);
+
+    }
+
+}

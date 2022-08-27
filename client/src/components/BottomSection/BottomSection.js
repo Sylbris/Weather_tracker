@@ -1,15 +1,7 @@
 import React from 'react';
-import { emphasize, makeStyles, withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Chip from '@material-ui/core/Chip';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import InvertColorsIcon from '@material-ui/icons/InvertColors';
-import ToysIcon from '@material-ui/icons/Toys';
-import useStyles from './styles';
+import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { useSelector } from 'react-redux';
-import moment from 'moment';
 
 const Container = styled.div`
 background: #ffffff;
@@ -22,8 +14,19 @@ justify-content: Left;
  * A component that displays the graph.
  * @returns 
  */
+ const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{payload[0].value}°</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+
 const BottomSection = () => {
-    const classes = useStyles();
     const lastReadings = useSelector((state) => state.lastReadings);
 
     return (
@@ -31,6 +34,7 @@ const BottomSection = () => {
             <LineChart width={850} height={110} data={lastReadings}>
                 <XAxis dataKey="updatedAt" tick={{fontSize: 9}} interval={0}/>
                 <YAxis tick={{fontSize: 9}}/>
+                <Tooltip content={<CustomTooltip />}/>
                 <Line type="monotone" dataKey="temperature" stroke="#000000" />
              </LineChart>
         </Container>

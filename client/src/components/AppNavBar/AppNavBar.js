@@ -9,6 +9,8 @@ import Box from '@material-ui/core/Box';
 import MainTabs from './MainTabs/MainTabs';
 import Home from '../Home/Home';
 import Readings from '../UserPanel/UserPanel';
+import { Button } from '@material-ui/core';
+import AddUser from '../Settings/AddUser';
 
 function a11yProps(index) {
   return {
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function AppNavBar() {
+export default function AppNavBar({ setUser }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -48,7 +50,7 @@ export default function AppNavBar() {
         <Tabs className={classes.check} value={value} onChange={handleChange} aria-label="simple tabs example" centered>
           <Tab label="Home" {...a11yProps(0)} />
           <Tab label="Readings" {...a11yProps(1)} />
-          <Tab label="Settings" {...a11yProps(2)} />
+          <Tab label="Add User" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <MainTabs className={classes.main_tab} value={value} index={0}>
@@ -58,7 +60,7 @@ export default function AppNavBar() {
         <Readings />
       </MainTabs>
       <MainTabs className={classes.main_tab} value={value} index={2}>
-        Settings
+        <AddUser setUser={setUser}/>
       </MainTabs>
     </div>
   );

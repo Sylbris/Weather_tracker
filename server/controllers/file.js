@@ -34,9 +34,9 @@ const router = express.Router();
  */
  export const getFile = async(req, res) => {
     try {
-        const getFile = await UploadFile.findOne();
+        const getFile = await UploadFile.find();
 
-        res.status(200).json(getFile);
+        res.status(200).json(getFile[getFile.length - 1]);
     }
     catch(error){
         res.status(400).json({ message: error.message});

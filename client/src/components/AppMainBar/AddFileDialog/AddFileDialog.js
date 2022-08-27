@@ -3,6 +3,7 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, Button } from "@
 import useStyles from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadFile } from '../../../api';
+import { getFile } from "../../../actions/fileUpload";
 /**
  * A simple Dialog to upload configuration file.
  * @param {*} props 
@@ -10,16 +11,18 @@ import { uploadFile } from '../../../api';
  */
 const AddFileDialog = (props) => {
     const classes = useStyles();
-    const { onClose, open } = props;
+    const { onClose, openCFG } = props;
+    
     const [file, setFile] = useState(null);
+
     const dispatch = useDispatch();
 
     const handleUpload = async (e) => {
         e.preventDefault();
-        //console.log(file);
-        dispatch(uploadFile(JSON.parse(file)));
-        clear();
+        const tick = await JSON.parse(file);
+        dispatch(uploadFile(tick).then(onClose())).then(dispatch(getFile));
         onClose();
+        console.log(openCFG)
       };
     
     const handleClose = () => {
@@ -41,7 +44,7 @@ const AddFileDialog = (props) => {
       };
     
     return (
-        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+        <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={openCFG}>
             <DialogTitle id="simple-dialog-title">Upload configuration file</DialogTitle>
             <DialogContent>
                 <DialogContentText>

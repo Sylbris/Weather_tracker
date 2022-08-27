@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Map from './Map';
 import { useSelector } from 'react-redux';
-import { FaIcons, FaRadiation, FaTemperatureHigh, FaWater, FaWind } from 'react-icons/fa';
-import ExtDataWidget from './ExtDataWidget/ExtDataWidget';
 import { Divider } from '@material-ui/core';
 const Container = styled.div`
 background: #ffffff;
@@ -79,15 +76,17 @@ STabPanel.tabsRole = 'TabPanel';
 
 const DataReadings = () => {
   const extReadings = useSelector((state) => state.extReadings);
-
+  const meteoblueReadings = useSelector((state) => state.meteoblue);
+  const weatherIsrReadings = useSelector((state) => state.weatherIsr);
+  
     return (
         <Container>
         <STabs selectedTabClassName='is-selected'
     selectedTabPanelClassName='is-selected'>
             <STabList>
                 <STab>IMS</STab>
-                <STab>AccuWeather</STab>
-                <STab>OpenWeather</STab>
+                <STab>METEOBLUE</STab>
+                <STab>WEATHER ITS ISR</STab>
             </STabList>
 
             <STabPanel>
@@ -102,18 +101,24 @@ const DataReadings = () => {
                 
             </STabPanel>
             <STabPanel>
-                <h2 style={{color:'#E2C044'}}>AccuWeather</h2>
-                <h3 style={{color:'#E2C044'}}> Temperature: {extReadings.temperature}° </h3>
-                <h3 style={{color:'#E2C044'}}> Wind: {extReadings.wind} km/h</h3>
-                <h3 style={{color:'#E2C044'}}> Radiation: {extReadings.radiation} UV</h3>
-                <h3 style={{color:'#E2C044'}}> Humidity: {extReadings.humidity}%</h3>
+                <h2 style={{color:'#000000'}}>METEOBLUE</h2>
+                <h3 style={{color:'#000000'}}> Temperature: {meteoblueReadings.temperature}° </h3>
+                <Divider />
+                <h3 style={{color:'##000000'}}> Wind: {meteoblueReadings.wind} km/h</h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Radiation: {meteoblueReadings.radiation} UV</h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Humidity: {meteoblueReadings.humidity}%</h3>
             </STabPanel>
             <STabPanel>
-                <h2 style={{color:'#E2C044'}}>OpenWeather</h2>
-                <h3 style={{color:'#E2C044'}}> Temperature: {extReadings.temperature}° </h3>
-                <h3 style={{color:'#E2C044'}}> Wind: {extReadings.wind} km/h</h3>
-                <h3 style={{color:'#E2C044'}}> Radiation: {extReadings.radiation} UV</h3>
-                <h3 style={{color:'#E2C044'}}> Humidity: {extReadings.humidity}%</h3>
+                <h2 style={{color:'#000000'}}>WEATHER ITS ISR</h2>
+                <h3 style={{color:'#000000'}}> Temperature: {weatherIsrReadings.temperature}° </h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Wind: {weatherIsrReadings.wind} km/h</h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Radiation: {weatherIsrReadings.radiation} UV</h3>
+                <Divider />
+                <h3 style={{color:'#000000'}}> Humidity: {weatherIsrReadings.humidity}%</h3>
             </STabPanel>
         </STabs>
         </Container>

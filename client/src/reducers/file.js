@@ -10,7 +10,7 @@
         case 'GET_CURRENT':
             return action.payload;
         case 'UPLOAD':
-            return file;
+            return action.payload;
         default:
             return file;
     }

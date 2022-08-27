@@ -9,6 +9,8 @@ import fileRoutes from './routes/file.js';
 import readingRoutes from './routes/readings.js';
 import extRoutes from './routes/extReadings.js';
 import nationalReadingsRoute from './routes/nationalReadings.js';
+import meteoblueRoute from './routes/meteoblueReadings.js';
+import weatherIsrRoute from './routes/weatherIsr.js';
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use('/readings', readingRoutes);
 app.use('/ims', extRoutes);
 app.use('/nationalReadings', nationalReadingsRoute);
 app.use('/user', userRoutes);
+app.use('/meteoblue', meteoblueRoute);
+app.use('/weather_isr', weatherIsrRoute);
 
 const CONNECTION_URL = 'mongodb+srv://weather_tracker:1q2w3e4r@cluster0.hbxbt59.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
