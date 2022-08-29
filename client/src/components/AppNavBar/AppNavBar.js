@@ -35,7 +35,11 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#F7ECDE',
     },
   }));
-
+/**
+ * Contains all the navigation for the app.
+ * @param {*} param0 
+ * @returns 
+ */
 export default function AppNavBar({ setUser }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);

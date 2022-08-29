@@ -15,6 +15,11 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import useStyles from './styles';
 import ComputerIcon from '@material-ui/icons/Computer';
 
+/**
+ * Headline component.
+ * @param {*} param0 
+ * @returns 
+ */
 const AppMainBar = ({ user, setUser }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
