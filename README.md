@@ -1,8 +1,10 @@
 # Weather_tracker
 final project in computer science degree
 
+![data_pic1](https://user-images.githubusercontent.com/62143916/187169506-69a2b004-4ca0-49cb-9f5e-60480c90ea10.png)
 
-![project1](https://user-images.githubusercontent.com/62143916/185380913-d01c3929-b503-4442-bff1-64addc5e7375.png)
+![data_pic2](https://user-images.githubusercontent.com/62143916/187169526-f77566b4-895a-4101-8ec4-76fa75c1e02f.png)
+
 # About
 This project is designed to serve the observatory in Ariel University,
 its purpose is to provide with data regarding the observatory,
